@@ -1,0 +1,62 @@
+<!-- Add a dark mode toggle button -->
+<button id="darkModeToggle">Dark Mode</button>
+
+<script>
+  // Get the dark mode toggle button
+  const toggleButton = document.getElementById('darkModeToggle');
+
+  // Add an event listener for clicks on the button
+  toggleButton.addEventListener('click', function() {
+    // Check if dark mode is enabled
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      // If dark mode is enabled, disable it and update the button text
+      localStorage.setItem('darkMode', 'disabled');
+      toggleButton.innerHTML = 'Dark Mode';
+    } else {
+      // If dark mode is disabled, enable it and update the button text
+      localStorage.setItem('darkMode', 'enabled');
+      toggleButton.innerHTML = 'Light Mode';
+    }
+    // Update the page to reflect the current dark mode setting
+    updateDarkMode();
+  });
+
+  // Add a function to update the page based on the dark mode setting
+  function updateDarkMode() {
+    // Check if dark mode is enabled
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      // If dark mode is enabled, add the "dark-mode" class to the body element
+      document.body.classList.add('dark-mode');
+    } else {
+      // If dark mode is disabled, remove the "dark-mode" class from the body element
+      document.body.classList.remove('dark-mode');
+    }
+  }
+
+  // Update the page when the script is first loaded
+  updateDarkMode();
+</script>
+
+<style>
+  /* Add some basic styling */
+  body {
+    font-
+    family: Arial, sans-serif;
+    color: #333;
+    background-color: #fff;
+  }
+  /* Add a dark mode class for styling dark mode elements */
+  .dark-mode {
+    color: #fff;
+    background-color: #333;
+  }
+  /* Style the dark mode toggle button */
+  #darkModeToggle {
+    background-color: #333;
+    border: none;
+    color: #fff;
+    font-size: 1em;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+</style>

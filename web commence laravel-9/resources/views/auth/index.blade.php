@@ -7,7 +7,8 @@
 
     <h1 class="text-center">Hello Again!</h1>
     
-    <form class="needs-validation">
+    <form class="needs-validation" method="POST"  action="#">
+        @csrf
         <div class="form-group was-validated">
             <label class="form-label" for="email">Email address</label>
             <input class="form-control" type="email" id="email" required>
