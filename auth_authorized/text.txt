@@ -1,0 +1,43 @@
+Use a library: Instead of implementing role-based access control from scratch, you might consider using a library that provides pre-built functionality such as user management, role management, and access control management.
+
+Check permissions on each protected page: On each protected page, you will need to check the user's role and the permissions associated with that role to determine if the user is authorized to access the resource.
+
+Use an access control list (ACL): An access control list (ACL) is a list of permissions associated with a particular resource. You can use an ACL to determine if a user is authorized to access a resource by checking the user's role against the list of permissions associated with that resource.
+
+Implement a fallback mechanism: In case the user doesn't have a role or the role doesn't have the permission, the application should fallback to a default behavior or asking the user to contact the administrator.
+
+Implement least privilege principle: The least privilege principle means that a user should only be granted the minimum level of access required to perform their job. This can help limit the potential damage caused by a security incident.
+
+Monitor access: It's important to monitor the access to your resources, so that you can detect if an unauthorized user is trying to access a resource. This can be done by logging the user's actions, such as the resources they access, and the time they access them.
+
+
+
+Use a secure password policy: Implement a secure password policy that requires users to create strong and unique passwords, and that enforces regular password changes.
+
+Implement password recovery: Implement a password recovery mechanism that allows users to reset their password in case they forget it. This can be done by sending a password reset link to the user's email address.
+
+Implement lockout policy: Implement a lockout policy that will lock a user's account after a certain number of failed login attempts. This can help prevent brute force attacks on the login system.
+
+Implement Single Sign-On (SSO): Single Sign-On (SSO) allows users to authenticate once and then access multiple applications without having to enter their credentials again. This can be done by using a third-party authentication service like OpenID Connect, OAuth or SAML.
+
+Encrypt sensitive data: When storing sensitive data such as passwords and credit card numbers, encrypt the data using a strong encryption algorithm.
+
+Use a Content Security Policy (CSP): Use a Content Security Policy (CSP) to help protect against cross-site scripting (XSS) and other types of injection attacks.
+
+Stay updated: Keep your web application, web server, and the libraries you are using updated to ensure that the security vulnerabilities are fixed, and that you are protected against new types of attacks.
+
+Use Two-Factor Authentication (2FA): Two-Factor Authentication (2FA) provides an additional layer of security by requiring users to provide a second form of authentication, such as a fingerprint or a code sent to their phone, in addition to their password.
+
+Implement IP and/or Device restrictions: Implement IP and/or device restrictions to limit the IP addresses and/or devices that can access the login page. This can help prevent automated or brute force login attempts.
+
+Implement anti-CSRF protection: Cross-Site Request Forgery (CSRF) is an attack that tricks the user into performing an action they didn't intend to. Implementing anti-CSRF protection, such as a CSRF token, can help protect your application against CSRF attacks.
+
+Implement Logging and Auditing: Logging and auditing can help you keep track of user activity and detect security breaches. Logging important events such as login attempts, password changes, and resource access can help you detect and investigate security incidents.
+
+Implement security testing: Regularly test your authentication and authorization mechanisms for vulnerabilities. This can be done using automated tools or by hiring a penetration tester.
+
+Implement security by design: Security should be considered at every stage of the development process, starting from the design phase. This can help ensure that security is an integral part of the application and that it's easier to maintain the security level over time.
+
+
+
+https://docs.zendframework.com/zend-permissions-rbac/
