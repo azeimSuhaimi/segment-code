@@ -1,6 +1,11 @@
 
 <?php
 
+
+function generateToken() {
+    return bin2hex(openssl_random_pseudo_bytes(32));
+}
+
 //check cookies
 
 if (isset($_COOKIE['remember_token'])) {
@@ -43,6 +48,13 @@ if(isset($_POST['']))
             // Store the username in a session variable
             $_SESSION['username'] = $username;
             $_SESSION['logged_in'] = true;
+
+            //generate token
+            $token = generateToken();
+            $_SESSION['token'] = $token;
+            $query = "UPDATE users SET token='$token' WHERE id='$user[id]'";
+            $conn->query($query);
+
 
             // Set a cookie with the username
             if(isset($_POST['remember_me']))

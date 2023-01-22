@@ -1,0 +1,103 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <style>
+        .autocomplete-container {
+  position: relative;
+}
+
+#autocomplete-input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+#suggestions-list {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+#suggestions-list li {
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+#suggestions-list li:hover {
+  background-color: #f2f2f2;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="autocomplete-container">
+        <input type="text" id="autocomplete-input" placeholder="Search...">
+        <ul id="suggestions-list"></ul>
+      </div>
+      
+    
+    
+</body>
+</html>
+
+<script>
+
+    // Get the input field and the suggestions list
+const input = document.getElementById("autocomplete-input");
+const suggestionsList = document.getElementById("suggestions-list");
+
+// Listen for the input event on the input field
+input.addEventListener("input", function() {
+    // Send a GET request to the server using Axios
+    axios.get(`autocomplete_data2.php?q=${this.value}`)
+        .then(response => {
+            // Clear the suggestions list
+            suggestionsList.innerHTML = "";
+
+            // Loop through the data and create an li element for each suggestion
+            response.data.forEach(item => {
+                const li = document.createElement("li");
+                li.innerHTML = item;
+                suggestionsList.appendChild(li);
+            });
+
+            if(input.value == '')
+            {
+                // Clear the suggestions list
+                suggestionsList.innerHTML = "";
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+});
+
+// Listen for the click event on the suggestions list
+suggestionsList.addEventListener("click", function(e) {
+    // Set the value of the input field to the clicked suggestion
+    input.value = e.target.innerHTML;
+    // Clear the suggestions list
+    suggestionsList.innerHTML = "";
+});
+
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form id="file-upload-form">
+    <label for="file-input">Select an image:</label>
+    <input type="file" id="file-input" name="file">
+    <br>
+    <img id="image-preview" src="no-image.jpg" alt="No image selected" style="display:none;">
+    <br>
+    <input type="submit" value="Upload">
+  </form>
+  
+  
+</body>
+</html>
+
+
+<script>
+const fileInput = document.getElementById('file-input');
+const imagePreview = document.getElementById('image-preview');
+
+fileInput.addEventListener('change', function () {
+  const file = fileInput.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function () {
+      imagePreview.src = reader.result;
+      imagePreview.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  } else {
+    imagePreview.style.display = 'none';
+  }
+});
+
+
+
+</script>

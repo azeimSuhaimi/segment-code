@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+</head>
+<body>
+   
+
+    <div id="app">
+
+        <nav>
+            <a href="" @click="currentPage = 'home'">Home</a>
+            <a href="" @click="currentPage = 'about'">About</a>
+            <a href="" @click="currentPage = 'contact'">Contact</a>
+          </nav>
+          
+        
+
+      </div>
+      
+
+      <script>
+
+const app = new Vue({
+  el: '#app',
+  data: {
+    currentPage: 'home'
+  },
+  components: {
+    home: { template: '<div>Home Page</div>' },
+    about: { template: '<div>About Page</div>' },
+    contact: { template: '<div>Contact Page</div>' }
+  },
+  template: `
+    <component :is="currentPage" />
+  `
+});
+
+        
+        </script>
+</body>
+</html>
+
+

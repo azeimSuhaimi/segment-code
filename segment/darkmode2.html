@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dark Mode Example</title>
+  <style>
+   /* Light theme styles */
+[data-theme='light'] {
+  background-color: white;
+  color: black;
+}
+
+/* Dark theme styles */
+[data-theme='dark'] {
+  background-color: black;
+  color: white;
+}
+
+  </style>
+</head>
+<body data-theme="light">
+  <button id="toggle-mode-btn"> Dark Mode</button>
+ 
+</body>
+</html>
+
+<script>
+
+const toggleButton = document.querySelector('#toggle-mode-btn');
+
+toggleButton.addEventListener('click', toggleDarkMode);
+
+
+function toggleDarkMode() {
+  const body = document.querySelector('body');
+  if (body.getAttribute('data-theme') === 'light') {
+    body.setAttribute('data-theme', 'dark');
+    toggleButton.innerText = 'Light Mode';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    body.setAttribute('data-theme', 'light');
+    toggleButton.innerText = 'Dark Mode';
+    localStorage.setItem('theme', 'light');
+  }
+}
+
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'dark') {
+  body.setAttribute('data-theme', 'dark');
+  toggleButton.innerText = 'Light Mode';
+}
+
+</script>
+
+
+<script>
+
+  /*
+  When creating a dark mode version of a webpage, in addition to changing the text and background colors, there are a few other elements that are commonly adjusted to improve the readability and usability of the page in low-light conditions. Some of the most common elements that people change in a dark mode version of a webpage include:
+
+Images and videos: The brightness and contrast of images and videos is often adjusted to ensure that they are visible and easy to view in dark mode.
+
+Buttons and other interactive elements: The color and contrast of buttons and other interactive elements is often adjusted to make them more visible and easy to interact with in dark mode.
+
+Icons and graphics: The color and contrast of icons and graphics is often adjusted to make them more visible and easy to understand in dark mode.
+
+Shadows and gradients: Shadows and gradients are often adjusted to make sure they are visible in dark mode and to improve the overall design and aesthetics of the page.
+
+Borders and dividers: Borders and dividers are often adjusted to make sure they are visible in dark mode, and to ensure that the page is easy to read and navigate.
+
+Forms and inputs: Form fields and inputs are often adjusted to ensure that the text is easy to read and the elements are easy to interact with in dark mode.
+
+Text and typography: The text size, font, and spacing are often adjusted to ensure that the page is easy to read and understand in dark mode.
+
+Animations and transitions: Some animations and transitions may need to be adjusted to ensure that they are visible and easy to understand in dark mode.
+
+It's worth noting that, the specific elements you choose to change will depend on the design and functionality of your webpage. The key is to be mindful of the readability and usability of the page when making changes, and to test your dark mode styles on different screen sizes, resolutions, and color contrasts to ensure that they look good and are easy to read and navigate on a variety of devices.
+  
+  */
+</script>

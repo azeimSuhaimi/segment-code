@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullpage.js@3/dist/fullpage.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/fullpage.js@3/dist/fullpage.min.js"></script>
+
+</head>
+<body>
+  
+
+  <div id="fullpage">
+    <div class="section">test here</div>
+    <div class="section">Some section</div>
+    <div class="section">Some section</div>
+    <div class="section">Some section</div>
+  </div>
+  
+</body>
+</html>
+
+<script>
+
+// https://github.com/alvarotrigo/fullPage.js/  for documentation
+
+// https://alvarotrigo.com/fullPage/docs/
+
+  new fullpage('#fullpage', {
+  sectionsColor: ['red', '#4BBFC3', '#7BAABE', 'whitesmoke'],
+  navigation: true,
+  navigationPosition: 'right',
+  
+});
+
+</script>

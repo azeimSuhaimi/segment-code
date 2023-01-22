@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="bricks.jpg" target="_blank" download="bricks.jpg">Download Image</a>
+
+
+  <button onclick="downloadImage()">Download Image</button>
+
+  <button id="download-button">Download Image</button>
+
+</body>
+</html>
+
+<script>
+
+function downloadImage() {
+    const imageUrl = 'bricks.jpg';
+    const link = document.createElement('a');
+    link.href = imageUrl;
+    link.download = 'bricks.jpg';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+
+
+
+const downloadButton = document.getElementById("download-button");
+downloadButton.addEventListener("click", function () {
+  const imageUrl = "bricks.jpg";
+  fetch(imageUrl)
+    .then(response => response.blob())
+    .then(blob => {
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "bricks.jpg";
+      link.click();
+    });
+});
+
+
+</script>

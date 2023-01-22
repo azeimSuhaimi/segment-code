@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+<script>
+  // Create a new FormData object
+const formData = new FormData();
+
+// Append some data to the FormData object
+formData.append('field1', 'value1');
+formData.append('field2', 'value2');
+formData.append('field3', 'value3');
+
+// Append a file to the FormData object
+const fileInput = document.getElementById('file-input');
+formData.append('file', fileInput.files[0]);
+
+function doit()
+{
+  fetch('upload.php', {
+    method: 'POST',
+    body: formData
+})
+.then(response => response.text())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error(error);
+});
+
+const xhr = new XMLHttpRequest();
+xhr.open('POST', 'upload.php');
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log(xhr.responseText);
+    }
+};
+xhr.send(formData);
+
+}
+
+</script>
