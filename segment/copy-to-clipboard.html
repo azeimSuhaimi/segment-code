@@ -1,0 +1,12 @@
+<textarea id="text-to-copy">This is the text to be copied</textarea>
+<button id="copy-btn">Copy</button>
+
+<script>
+    var btn = document.getElementById("copy-btn");
+    var text = document.getElementById("text-to-copy");
+
+    btn.addEventListener("click", function() {
+        text.select();
+        document.execCommand("copy");
+    });
+</script>

@@ -1,0 +1,27 @@
+<form>
+    <input type="radio" name="color" value="red" id="red">
+    <label for="red">Red</label>
+  
+    <input type="radio" name="color" value="green" id="green">
+    <label for="green">Green</label>
+  
+    <input type="radio" name="color" value="blue" id="blue">
+    <label for="blue">Blue</label>
+  
+  </form>
+  
+  <div id="selected-color"></div>
+  
+  <script>
+    var colorInputs = document.getElementsByName("color");
+    var selectedColor = document.getElementById("selected-color");
+  
+    for(var i = 0; i < colorInputs.length; i++) {
+      colorInputs[i].addEventListener("change", function() {
+        if(this.checked) {
+          selectedColor.innerHTML = "Selected color: " + this.value;
+        }
+      });
+    }
+  </script>
+  

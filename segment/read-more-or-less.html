@@ -1,0 +1,23 @@
+<div id="text">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim ornare nisi, vitae mattis nulla ante id dui.
+  </div>
+  <button id="read-more-btn">Read More</button>
+  
+  <script>
+    var text = document.getElementById("text");
+    var btn = document.getElementById("read-more-btn");
+    var moreText = text.innerHTML;
+    var lessText = text.innerHTML.substring(0, 100) + "...";
+    text.innerHTML = lessText;
+  
+    btn.addEventListener("click", function() {
+        if (text.innerHTML === lessText) {
+            text.innerHTML = moreText;
+            btn.innerHTML = "Read Less";
+        } else {
+            text.innerHTML = lessText;
+            btn.innerHTML = "Read More";
+        }
+    });
+  </script>
+  

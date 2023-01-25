@@ -1,0 +1,24 @@
+<input type="text" id="search-input">
+<button id="search-btn">Search</button>
+<div id="text-content">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim ornare nisi, vitae mattis nulla ante id dui.
+</div>
+
+<style>
+  .highlight {
+    background-color: yellow;
+  }
+</style>
+
+<script>
+  var searchInput = document.getElementById("search-input");
+  var searchBtn = document.getElementById("search-btn");
+  var textContent = document.getElementById("text-content");
+
+  searchBtn.addEventListener("click", function() {
+    var searchText = searchInput.value;
+    var text = textContent.innerHTML;
+    var newText = text.replace(new RegExp(searchText, "gi"), "<span class='highlight'>" + searchText + "</span>");
+    textContent.innerHTML = newText;
+  });
+</script>

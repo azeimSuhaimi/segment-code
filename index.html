@@ -1,40 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+<input type="text" id="datepicker">
+<div id="description"></div>
 
-  <style>
-    .parallax-element {
-  background-image: url('bricks.jpg');
-  height: 500px;
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-}
-
-  </style>
-</head>
-<body>
-  <div class="parallax-element"></div>
-
-</body>
-</html>
-
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script>
-
-  // https://scrollmagic.io/
-  // https://dixonandmoe.com/rellax/
-
-
-  var parallaxElement = document.querySelector('.parallax-element');
-
-window.addEventListener('scroll', function() {
-  var scrollPos = window.scrollY;
-  parallaxElement.style.transform = 'translateY(' + scrollPos * -0.3 + 'px)';
-});
-
+  $( "#datepicker" ).datepicker({
+    onSelect: function(dateText, inst) {
+      var description = "";
+      if(dateText == "01/01") {
+        description = "New Year's Day";
+      } else if(dateText == "07/04") {
+        description = "Independence Day";
+      } else {
+        description = "";
+      }
+      $("#description").html(description);
+    }
+  });
 </script>

@@ -1,0 +1,19 @@
+Laravel 8 includes several features for authentication and authorization out of the box. Some of the key features include:
+
+Authentication Scaffolding: Laravel 8 provides a simple way to setup authentication by running the command php artisan make:auth which will create a default controller, views, and routes for handling authentication and authorization.
+
+Guard: Laravel 8 uses guards to authenticate users. The default guard is set to web and you have to configure the guard to api in case you are working with API.
+
+User Provider: Laravel 8 uses user providers to retrieve user records from your database or other storage systems. The default user provider uses the Eloquent ORM to retrieve user records from the users table.
+
+Password Encryption: Laravel 8 uses the bcrypt algorithm to encrypt passwords. This ensures that even if someone gains access to your database, they will not be able to read the users' passwords.
+
+Login Throttling: Laravel 8 includes login throttling to prevent brute-force attacks by limiting the number of login attempts from a specific IP address.
+
+CSRF Protection: Laravel 8 includes built-in protection against cross-site request forgery (CSRF) attacks by automatically generating and validating CSRF tokens on forms.
+
+Authorization: Laravel 8 includes a simple way to authorize user actions by using gates and policies.
+
+Remember me: Laravel 8 provides a simple way for users to remain logged in to the application between sessions by setting a remember me token.
+
+Two-Factor Authentication: Laravel 8 support for two-factor authentication through the use of the google authenticator package

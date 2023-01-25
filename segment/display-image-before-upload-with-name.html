@@ -1,0 +1,32 @@
+<input type="file" id="file-input" multiple>
+<div id="image-preview"></div>
+
+<script>
+    var input = document.getElementById("file-input");
+    var preview = document.getElementById("image-preview");
+
+    input.addEventListener("change", function () {
+        preview.innerHTML = "";
+
+        for (var i = 0; i < this.files.length; i++) {
+            var file = this.files[i];
+
+            if (file.type.match(/image.*/)) {
+                var reader = new FileReader();
+
+                reader.addEventListener("load", function (event) {
+                    var img = document.createElement("img");
+                    var imageName = document.createElement("p");
+                    img.src = event.target.result;
+                    img.style.maxWidth = "100%";
+                    img.style.maxHeight = "100%";
+                    imageName.innerHTML = file.name;
+                    preview.appendChild(img);
+                    preview.appendChild(imageName);
+                });
+
+                reader.readAsDataURL(file);
+            }
+        }
+    });
+</script>

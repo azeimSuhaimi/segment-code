@@ -1,0 +1,19 @@
+<label for="start-date">Start Date:</label>
+<input type="date" id="start-date" onchange="updateEndDateMin()">
+
+<label for="end-date">End Date:</label>
+<input type="date" id="end-date" onchange="updateStartDateMax()" >
+
+<script>
+const startDate = document.querySelector("#start-date");
+const endDate = document.querySelector("#end-date");
+
+function updateEndDateMin() {
+  endDate.min = startDate.value;
+}
+
+function updateStartDateMax() {
+  startDate.max = endDate.value;
+  
+}
+</script>
