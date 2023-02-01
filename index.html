@@ -1,20 +1,65 @@
-<input type="text" id="datepicker">
-<div id="description"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <style>
+
+    /* CSS for the loading spinner */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- HTML for the loading spinner -->
+<div id="loader">
+  
+</div>
+
+<!-- HTML for the content -->
+<div id="content">
+  <!-- Your content goes here -->dasdasda
+</div>
+
+  
+</body>
+</html>
 <script>
-  $( "#datepicker" ).datepicker({
-    onSelect: function(dateText, inst) {
-      var description = "";
-      if(dateText == "01/01") {
-        description = "New Year's Day";
-      } else if(dateText == "07/04") {
-        description = "Independence Day";
-      } else {
-        description = "";
-      }
-      $("#description").html(description);
-    }
-  });
+  // Hide content on page load
+  document.querySelector('.content').style.display = 'none';
+
+  // Show content after 5 seconds
+  setTimeout(function(){
+      document.querySelector('.content').style.display = 'block';
+      document.querySelector('.loader').style.display = 'none';
+  }, 5000);
 </script>

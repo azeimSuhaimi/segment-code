@@ -1,0 +1,43 @@
+<input type="text" id="inputText">
+<input type="hidden" id="hiddenInput">
+<button id="addBtn">Add</button>
+<div id="display"></div>
+
+
+<script>
+
+
+  let inputText = document.getElementById("inputText");
+let hiddenInput = document.getElementById("hiddenInput");
+let addBtn = document.getElementById("addBtn");
+let display = document.getElementById("display");
+let data = [];
+
+addBtn.addEventListener("click", function() {
+    addData();
+});
+
+inputText.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        addData();
+    }
+});
+
+function addData() {
+    let value = inputText.value;
+    data.push(value);
+    hiddenInput.value = JSON.stringify(data);
+    displayData();
+    inputText.value = "";
+}
+
+function displayData() {
+    display.innerHTML = "";
+    for (let i = 0; i < data.length; i++) {
+        let item = document.createElement("div");
+        item.innerHTML = data[i];
+        display.appendChild(item);
+    }
+}
+
+</script>
