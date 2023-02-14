@@ -1,41 +1,48 @@
+
 <?php
+// Recipient email address
+$to = "recipient@example.com";
+
+// Subject of the email
+$subject = "Test email";
+
+// Message body
+$message = "This is a test email message.";
+
+// Additional headers
+$headers = "From: sender@example.com\r\n";
+$headers .= "Reply-To: reply-to@example.com\r\n";
+$headers .= "X-Mailer: PHP/" . phpversion();
+
+// Configuration options for the SMTP extension
+$smtp_config = array(
+    "host" => "smtp.mailtrap.io",
+    "port" => 2525,
+    "username" => "your-mailtrap-username",
+    "password" => "your-mailtrap-password",
+    "auth" => true,
+);
+
+// Create a new SMTP instance
+$smtp = new SMTP($smtp_config["host"], $smtp_config["port"], "tls", $smtp_config["username"], $smtp_config["password"], $smtp_config["auth"]);
+
+// Connect to the SMTP server
+if ($smtp->connect()) {
+    // Send the email
+    if ($smtp->send($to, $subject, $message, $headers)) {
+        echo "Email sent successfully.";
+    } else {
+        echo "Email sending failed.";
+    }
+
+    // Close the SMTP connection
+    $smtp->disconnect();
+} else {
+    echo "SMTP connection failed.";
+}
 
 
-   $some_data = array(
-    'userSecretKey'=>'w5x7srq7-rx5r-3t89-2ou2-k7361x2jewhn',
-    'categoryCode'=>'gcbhict9',
-    'billName'=>$_POST[''],
-    'billDescription'=>$_POST[''],
-    'billPriceSetting'=>0,
-    'billPayorInfo'=>1,
-    'billAmount'=>$_POST[''] * 100,
-    'billReturnUrl'=>'http://bizapp.my',
-    'billCallbackUrl'=>'http://bizapp.my/paystatus',
-    'billExternalReferenceNo' => 'AFR341DFI', // reference number sendiri bukan toyyyipay punya macam number resit
-    'billTo'=>$_POST[''],
-    'billEmail'=>$_POST[''],
-    'billPhone'=>$_POST[''],
-    'billSplitPayment'=>0,
-    'billSplitPaymentArgs'=>'',
-    'billPaymentChannel'=>'2',
-    'billContentEmail'=>'Thank you for purchasing our product!',
-    'billChargeToCustomer'=>'',
-    'billExpiryDays'=>1
-  );  
+?>
 
-  $curl = curl_init();
 
-  curl_setopt($curl, CURLOPT_POST, 1);
-  curl_setopt($curl, CURLOPT_URL, 'https://dev.toyyibpay.com/index.php/api/createCategory');  //PROVIDE API LINK HERE
-  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $some_data);
 
-  $result = curl_exec($curl);
-
-  $info = curl_getinfo($curl);  
-  curl_close($curl);
-
-  $obj = json_decode($result);
-  echo $result;
-
-  header('https://dev.toyyibpay.com/'. $obj->Billcode);
