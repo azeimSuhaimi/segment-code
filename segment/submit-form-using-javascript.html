@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Submit Form Example</title>
+  </head>
+  <body>
+    <form id="my-form" target="_blank">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <br>
+    </form>
+    <button type="button" onclick="submitForm()">Submit</button>
+    
+    <script>
+      function submitForm() {
+        const form = document.getElementById("my-form");
+        form.submit();
+      }
+    </script>
+  </body>
+</html>

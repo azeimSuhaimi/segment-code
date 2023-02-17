@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Terms and Conditions Example</title>
+  </head>
+  <body>
+    <h1>Terms and Conditions</h1>
+    <p>Please read the following terms and conditions before submitting your name and email:</p>
+    <ul>
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+      <li>Sed ac mauris ut elit condimentum malesuada.</li>
+      <li>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</li>
+    </ul>
+    <form id="myForm" action="submit.php" method="post" onsubmit="return validateForm()">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" >
+      <br>
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" >
+      <br>
+      <label>
+        <input type="checkbox" name="agree" id="agree" >
+        I have read and agree to the terms and conditions.
+      </label>
+      <br>
+      <button type="submit">Submit</button>
+    </form>
+    <script>
+      function validateForm() {
+        const agreeCheckbox = document.getElementById("agree");
+        if (!agreeCheckbox.checked) {
+          alert("Please read and agree to the terms and conditions before submitting your name and email.");
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>

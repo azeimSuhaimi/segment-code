@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .chat-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.chat-name {
+  margin: 0;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #2ecc71;
+  margin-left: 10px;
+}
+
+.message-area {
+  height: 300px;
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+.message {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  max-width: 70%;
+}
+
+.message.received {
+  background-color: #f1f0f0;
+  float: left;
+  clear: both;
+}
+
+.message.sent {
+  background-color: #2ecc71;
+  color: #fff;
+  float: right;
+  clear: both;
+}
+
+.timestamp {
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.status-icon {
+  width: 12px;
+  height: 12px;
+  background-image: url('checkmark.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 5px;
+}
+
+.input-area {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2ecc71;
+  color:#fff;
+cursor: pointer;
+}
+
+  </style>
+ 
+</head>
+<body>
+  <div class="chat-container">
+  <div class="chat-header">
+    <img src="avatar.png" alt="Avatar" class="avatar">
+    <h3 class="chat-name">John Doe</h3>
+    <span class="status-indicator"></span>
+  </div>
+  <div class="message-area">
+    <div class="message received">
+      <p>Hello! How are you?</p>
+      <span class="timestamp">10:30 AM</span>
+    </div>
+    <div class="message sent">
+      <p>Hey! I'm good, thanks. How about you?</p>
+      <span class="timestamp">10:35 AM</span>
+      <span class="status-icon checkmark"></span>
+    </div>
+    <div class="message received">
+      <p>Not too bad, thanks for asking. What have you been up to?</p>
+      <span class="timestamp">10:38 AM</span>
+    </div>
+  </div>
+  <div class="input-area">
+    <input type="text" placeholder="Type your message...">
+    <button>Send</button>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+<script>
+
+  // Send button click event handler
+const sendButton = document.querySelector('.input-area button');
+const messageInput = document.querySelector('.input-area input');
+const messageArea = document.querySelector('.message-area');
+
+sendButton.addEventListener('click', function() {
+const messageText = messageInput.value.trim();
+
+if (messageText === '') {
+return;
+}
+
+const message = document.createElement('div');
+message.classList.add('message', 'sent');
+message.innerHTML = <p>${messageText}</p> <span class="timestamp">${getCurrentTime()}</span> <span class="status-icon"></span> ;
+messageArea.appendChild(message);
+messageArea.scrollTop = messageArea.scrollHeight;
+
+messageInput.value = '';
+});
+
+// Utility function to get current time
+function getCurrentTime() {
+const now = new Date();
+const hours = now.getHours().toString().padStart(2, '0');
+const minutes = now.getMinutes().toString().padStart(2, '0');
+return ${hours}:${minutes};
+}
+</script>

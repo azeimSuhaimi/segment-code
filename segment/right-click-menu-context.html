@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Context Menu Example</title>
+    <style>
+      /* Define styles for the context menu */
+      #context-menu {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        border: 1px solid #c8c8c8;
+        padding: 5px 0;
+      }
+      #context-menu li {
+        list-style-type: none;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+      #context-menu li:hover {
+        background-color: #e5e5e5;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Right-click anywhere on the page to open the context menu.</p>
+
+    <!-- Define the context menu -->
+    <ul id="context-menu">
+      <li>Menu item 1</li>
+      <li>Menu item 2</li>
+      <li>Menu item 3</li>
+    </ul>
+
+    <script>
+      const contextMenu = document.querySelector("#context-menu");
+      let clickedElement = null;
+
+      // Show the context menu when the user right-clicks
+      document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        clickedElement = event.target;
+        contextMenu.style.display = "block";
+        contextMenu.style.left = event.pageX + "px";
+        contextMenu.style.top = event.pageY + "px";
+      });
+
+      // Hide the context menu when the user clicks outside of it
+      document.addEventListener("click", (event) => {
+        if (!contextMenu.contains(event.target)) {
+          contextMenu.style.display = "none";
+        }
+      });
+
+      // Do something when a menu item is clicked
+      contextMenu.addEventListener("click", (event) => {
+        if (event.target.tagName === "LI") {
+          const menuItemText = event.target.textContent;
+          console.log(`You clicked "${menuItemText}" on "${clickedElement.tagName}"`);
+        }
+      });
+    </script>
+  </body>
+</html>
