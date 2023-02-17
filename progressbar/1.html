@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <script src='main.js'></script>
+
+  <style>
+    .my-progress {
+  width: 100%;
+  height: 10px;
+  border: 1px solid black;
+  background-color: #f2f2f2;
+}
+
+.my-progress::-webkit-progress-value {
+  background-color: blue;
+}
+
+.my-progress::-moz-progress-bar {
+  background-color: blue;
+}
+
+  </style>
+</head>
+<body>
+
+  <progress class="my-progress" value="50" max="100"></progress>
+
+  
+</body>
+</html>
+
+<script>
+  const progressBar = document.querySelector('progress');
+progressBar.value = 75;
+
+</script>
