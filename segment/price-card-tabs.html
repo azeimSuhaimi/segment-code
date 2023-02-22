@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .price-card {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 20px;
+	width: 300px;
+}
+
+.tabs {
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.tab {
+	background-color: #ddd;
+	border: 1px solid #ccc;
+	border-radius: 5px 5px 0 0;
+	color: #333;
+	cursor: pointer;
+	font-weight: bold;
+	padding: 10px;
+}
+
+.tab.active {
+	background-color: #fff;
+	border-bottom-color: transparent;
+	color: #000;
+}
+
+.tab-content {
+	display: none;
+}
+
+.tab-content.active {
+	display: block;
+}
+
+.price {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+button {
+	background-color: #0084ff;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 16px;
+	padding: 10px;
+	width: 100%;
+}
+
+    </style>
+</head>
+<body>
+    
+
+    <div class="price-card">
+        <div class="tabs">
+            <div class="tab active" data-tab="monthly">Monthly</div>
+            <div class="tab" data-tab="yearly">Yearly</div>
+        </div>
+        <div class="tab-content monthly active">
+            <h2>Monthly Subscription</h2>
+            <p>Get access to our services on a monthly basis.</p>
+            <div class="price">$10/month</div>
+            <button>Subscribe</button>
+        </div>
+        <div class="tab-content yearly">
+            <h2>Yearly Subscription</h2>
+            <p>Get access to our services for a full year.</p>
+            <div class="price">$100/year</div>
+            <button>Subscribe</button>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<script>
+    const tabs = document.querySelectorAll('.tab');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const tabId = tab.getAttribute('data-tab');
+    
+    tabs.forEach(tab => {
+      tab.classList.remove('active');
+    });
+    
+    tabContents.forEach(content => {
+      content.classList.remove('active');
+    });
+    
+    tab.classList.add('active');
+    document.querySelector(`.tab-content.${tabId}`).classList.add('active');
+  });
+});
+
+</script>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>pre loader</title>
+
+    <!-- CSS File -->
+    <style>
+
+
+.load-background {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    background: #151320;
+    z-index: 9999;
+    opacity: 0.9;
+}
+
+.loader {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    perspective: 800px;
+    
+}
+
+.loader .loader-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.loader .loader-item:nth-child(1) {
+    border-bottom: 6px solid #f13a8f;
+    transform: rotateX(35deg) rotateY(-45deg);
+    animation: rotate-one 1s linear infinite;
+}
+
+.loader .loader-item:nth-child(2) {
+    border-right: 6px solid #4bc8eb;
+    transform: rotateX(50deg) rotateY(10deg);
+    animation: rotate-two 1s linear infinite;
+}
+
+.loader .loader-item:nth-child(3) {
+    border-top: 6px solid #36f372;
+    transform: rotateX(35deg) rotateY(55deg);
+    animation: rotate-three 1s linear infinite;
+}
+
+      /* Styling for the content */
+      .content {
+        display: none;
+      }
+
+      /* Styling for the preloader animation */
+      .fade-out {
+        animation: fadeOut 1s;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes fadeOut {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+@keyframes rotate-one {
+    to {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+}
+
+@keyframes rotate-two {
+    to {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+}
+
+@keyframes rotate-three {
+    to {
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+    }
+}
+    </style>
+
+</head>
+
+<body >
+
+    <div class="load-background">
+
+        <div class="loader">
+            <div class="loader-item"></div>
+            <div class="loader-item"></div>
+            <div class="loader-item"></div>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Preloader Example</h1>
+        <p>This is some example content that will be displayed after the preloader has finished loading.</p>
+      </div>
+
+</body>
+
+</html>
+
+<script>
+    // Hide the preloader after 3 seconds
+    setTimeout(function() {
+      const preloader = document.querySelector(".load-background");
+      const content = document.querySelector(".content");
+      //preloader.style.display = "none";
+      preloader.classList.add("fade-out");
+      content.style.display = "block";
+    }, 3000);
+  </script>

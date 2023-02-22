@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background-color: transparent;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    
+    <div class="popup" id="subscribe-popup">
+        <div class="popup-content">
+          <h2>Subscribe to Our Page!</h2>
+          <p>Subscribe to our page to get the latest news and updates!</p>
+          <form>
+            <input type="text" placeholder="Enter your email">
+            <button type="submit">Subscribe</button>
+          </form>
+          <button class="close-button" id="close-subscribe-popup">&times;</button>
+        </div>
+      </div>
+      
+</body>
+</html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const subscribePopup = document.getElementById('subscribe-popup');
+  const closeSubscribePopup = document.getElementById('close-subscribe-popup');
+
+  // Check if user has already subscribed
+  if (!localStorage.getItem('subscribed')) {
+    // Show the subscribe popup after 3 seconds
+    setTimeout(() => {
+      subscribePopup.style.display = 'flex';
+    }, 3000);
+  }
+
+  // Close the subscribe popup
+  closeSubscribePopup.addEventListener('click', () => {
+    subscribePopup.style.display = 'none';
+    // Store that user has subscribed
+    localStorage.setItem('subscribed', 'true');
+  });
+});
+
+</script>

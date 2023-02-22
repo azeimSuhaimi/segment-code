@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animate Background</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+
+		.animated-bg {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1111;
+			background: linear-gradient(to right, #33ccff, #ff99cc);
+			animation: animateBg 30s ease infinite;
+		}
+
+		@keyframes animateBg {
+			0% {
+				background-position: 0 0;
+			}
+			100% {
+				background-position: 100% 0;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="animated-bg"></div>
+	<!-- Add your page content here -->
+
+    dasdsadasdsadas
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, officiis aut a exercitationem ut quisquam dolores atque assumenda. Voluptatibus voluptas temporibus perspiciatis rem suscipit mollitia eveniet odit pariatur natus incidunt.
+</body>
+</html>

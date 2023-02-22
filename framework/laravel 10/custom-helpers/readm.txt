@@ -1,0 +1,42 @@
+You can create custom helper functions in Laravel by creating a new PHP file in the app/Helpers directory and defining your functions there.
+
+Here are the steps to create a custom helper function in Laravel:
+
+Create a new PHP file in the app/Helpers directory. You can name this file anything you like, but it's common to use helpers.php.
+
+In your new PHP file, define your helper function(s). For example, you could define a function to format a date in a specific way:
+
+php
+Copy code
+
+<?php
+
+function formatDate($date, $format = 'd-m-Y') {
+    return date($format, strtotime($date));
+}
+
+?>
+
+In order for Laravel to recognize your new helper file, you need to register it in the composer.json file. Open the composer.json file and add your helper file to the autoload section, like this:
+json
+Copy code
+
+"autoload": {
+    "files": [
+        "app/Helpers/helpers.php"
+    ],
+    // ...
+},
+
+Run the following command to regenerate the autoload files:
+lua
+Copy code
+composer dump-autoload
+Now you can use your custom helper function(s) in your Laravel application.
+
+For example, you could use the formatDate() function in a view like this:
+
+scss
+Copy code
+
+{{ formatDate($date) }}
