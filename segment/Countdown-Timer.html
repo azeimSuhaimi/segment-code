@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #countdown {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+}
+
+    </style>
+</head>
+<body>
+
+    <div id="countdown"></div>
+
+    
+</body>
+</html>
+
+<script>
+    // Set the date for the countdown (YYYY/MM/DD)
+const countDownDate = new Date("2023/3/28").getTime();
+
+// Update the countdown every second
+const countdown = setInterval(function() {
+
+  // Get the current time
+  const now = new Date().getTime();
+  
+  // Calculate the time remaining until the countdown date
+  const distance = countDownDate - now;
+  
+  // Calculate the days, hours, minutes, and seconds remaining
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Format the output string
+  const output = `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+  
+  // Display the countdown
+  document.getElementById("countdown").innerHTML = output;
+  
+  // If the countdown is finished, stop the interval and display a message
+  if (distance < 0) {
+    clearInterval(countdown);
+    document.getElementById("countdown").innerHTML = "Countdown expired!";
+  }
+}, 1000);
+
+</script>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  background-color: #ddd;
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+    </style>
+</head>
+<body>
+    
+    <div id="container">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+        <div class="item">Item 5</div>
+        <div class="item">Item 6</div>
+        <div class="item">Item 7</div>
+        <div class="item">Item 8</div>
+        <div class="item">Item 9</div>
+        <div class="item">Item 10</div>
+        <div class="item">Item 6</div>
+        <div class="item">Item 7</div>
+        <div class="item">Item 8</div>
+        <div class="item">Item 9</div>
+        <div class="item">Item 10</div>
+        <div class="item">Item 6</div>
+        <div class="item">Item 7</div>
+        <div class="item">Item 8</div>
+        <div class="item">Item 9</div>
+        <div class="item">Item 10</div>
+        <div class="item">Item 6</div>
+        <div class="item">Item 7</div>
+        <div class="item">Item 8</div>
+        <div class="item">Item 9</div>
+        <div class="item">Item 10</div>
+        <div class="item">Item 6</div>
+        <div class="item">Item 7</div>
+        <div class="item">Item 8</div>
+        <div class="item">Item 9</div>
+        <div class="item">Item 10</div>
+        <div class="item">Item 6</div>
+        <div class="item">Item 7</div>
+        <div class="item">Item 8</div>
+        <div class="item">Item 9</div>
+        <div class="item">Item 10</div>
+      </div>
+      <button id="load-more">Load More</button>
+      
+</body>
+</html>
+
+<script>
+    const items = document.querySelectorAll('.item');
+const loadMoreBtn = document.querySelector('#load-more');
+let visibleCount = 0;
+const increment = 4;
+
+// Show initial items
+for (let i = 0; i < increment; i++) {
+  items[i].classList.add('visible');
+  visibleCount++;
+}
+
+// Show more items on button click
+loadMoreBtn.addEventListener('click', () => {
+  for (let i = visibleCount; i < visibleCount + increment; i++) {
+    if (items[i]) {
+      items[i].classList.add('visible');
+      visibleCount++;
+    } else {
+      loadMoreBtn.style.display = 'none';
+      break;
+    }
+  }
+});
+
+</script>
