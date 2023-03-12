@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-weight: 100;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background: #a84444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.game-board {
+  width: 385px;
+  height: 800px;
+  position: relative;
+  background: #00c267;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: inset 10px 5px 5px rgba(255, 255, 255, 0.5882352941), inset -3px -3px 5px rgba(255, 255, 255, 0.5882352941), 10px 5px 15px rgba(0, 0, 0, 0.5882352941);
+}
+.game-board .display-box {
+  position: relative;
+  width: 335px;
+  height: 504px;
+  background: #768bff;
+  box-shadow: inset 0 0 20px #000000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.game-board .display-box .player {
+  position: absolute;
+  top: 386px;
+  left: 0;
+  width: 111px;
+  height: 111px;
+  background: url("../images/player.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  filter: drop-shadow(0 0 5px #000);
+}
+.game-board .display-box .enemy {
+  background: url("../images/enemy.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  filter: drop-shadow(0 0 5px #000);
+}
+.game-board .display-box .enemy1 {
+  position: absolute;
+  top: -111px;
+  left: 222px;
+  width: 111px;
+  height: 111px;
+  animation: enemy1 8s infinite linear;
+}
+.game-board .display-box .enemy2 {
+  position: absolute;
+  top: -111px;
+  left: 0px;
+  width: 111px;
+  height: 111px;
+  animation: enemy1 8s infinite linear;
+  animation-delay: 4s;
+}
+.game-board .keypad-box {
+  position: relative;
+  width: 335px;
+  height: 218px;
+  box-shadow: 0 0 0 3px #000000;
+  border-radius: 10px;
+  box-shadow: inset 5px 5px 9px #004e29, inset -5px -5px 9px #00ffa5;
+}
+.game-board .keypad-box > div {
+  width: 76px;
+  height: 76px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 40px;
+  border-radius: 80px;
+  background: #00c267;
+  box-shadow: 5px 5px 13px #004e29, -5px -5px 13px #00ffa5;
+}
+.game-board .keypad-box .key-up {
+  top: 12px;
+  left: 128px;
+}
+.game-board .keypad-box .key-down {
+  bottom: 12px;
+  left: 128px;
+}
+.game-board .keypad-box .key-left {
+  top: 70px;
+  left: 60px;
+}
+.game-board .keypad-box .key-right {
+  right: 63px;
+  top: 70px;
+}
+
+@keyframes enemy1 {
+  25% {
+    top: 0;
+  }
+  50% {
+    top: 168px;
+  }
+  75% {
+    top: 336px;
+  }
+  100% {
+    top: 504px;
+  }
+}
+@keyframes enemy2 {
+  25% {
+    top: 504px;
+  }
+  50% {
+    top: 336px;
+  }
+  75% {
+    top: -168px;
+  }
+  100% {
+    top: 0;
+  }
+}/*# sourceMappingURL=style.css.map */

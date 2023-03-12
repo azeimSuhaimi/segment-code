@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .container {
@@ -13,10 +14,147 @@
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url(../images/background1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  animation: backgroundChange 50s linear infinite;
 }
 
+@keyframes backgroundChange {
+  0% {
+    background-image: url(../images/background1.jpg);
+  }
+  15% {
+    background-image: url(../images/background1.jpg);
+  }
+  20% {
+    background-image: url(../images/background2.jpg);
+  }
+  35% {
+    background-image: url(../images/background2.jpg);
+  }
+  40% {
+    background-image: url(../images/background3.jpg);
+  }
+  55% {
+    background-image: url(../images/background3.jpg);
+  }
+  60% {
+    background-image: url(../images/background4.jpg);
+  }
+  75% {
+    background-image: url(../images/background4.jpg);
+  }
+  80% {
+    background-image: url(../images/background5.jpg);
+  }
+  95% {
+    background-image: url(../images/background5.jpg);
+  }
+}
 .taskbar {
   position: absolute;
   bottom: 0;
   left: 0;
+  display: grid;
+  grid-template-columns: 40px auto auto;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.3764705882);
+  font-size: 0 !important;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  z-index: 10;
 }
+
+.taskbar img {
+  max-width: 35px;
+  height: auto;
+  padding: 2px 5px;
+}
+
+.taskbar img:hover {
+  background: rgba(0, 0, 0, 0.5803921569);
+}
+
+.taskbar .taskbar-widget {
+  justify-self: flex-end;
+  border-right: 1px solid rgba(0, 0, 0, 0.7333333333);
+  margin-right: 3px;
+}
+
+main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+main .icon {
+  width: 80px;
+  font-size: 11px;
+  text-align: center;
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid rgba(96, 170, 255, 0);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+main .icon:hover {
+  background: rgba(150, 199, 255, 0.5764705882);
+  border: 1px solid rgba(96, 170, 255, 0.6862745098);
+}
+
+main .icon:focus {
+  background: rgba(157, 203, 255, 0.5764705882);
+  border: 1px solid rgba(96, 170, 255, 0.6862745098);
+}
+
+.icon .img-box img {
+  max-width: 50px;
+  height: auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.icon .title {
+  color: #ffffff;
+  text-shadow: 0 0 3px #000000, 0 0 5px #000000;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.start-menu-box {
+  position: absolute;
+  width: 70%;
+  height: 70vh;
+  bottom: 29px;
+  background: rgba(255, 255, 255, 0.431372549);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  display: none;
+}
+
+.action-center {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25%;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.431372549);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  display: none;
+}
+
+.taskbar-widget img[alt=Notification]:hover main .action-center {
+  display: block;
+}/*# sourceMappingURL=style.css.map */

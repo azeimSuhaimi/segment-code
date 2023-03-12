@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+    // Example JSON string
+const jsonString = '{"name": "John", "age": 30}';
+
+// Parse the string into a JavaScript object
+const jsonObject = JSON.parse(jsonString);
+
+// Remove the "age" property from the object
+delete jsonObject.age;
+
+// Convert the updated object back into a JSON string
+const updatedJsonString = JSON.stringify(jsonObject);
+
+console.log(updatedJsonString); // Output: {"name":"John"}
+
+///////////////////////////////////////////////////
+
+//update 
+
+let jsonDatas = [
+  { name: "John", age: 25 },
+  { name: "Jane", age: 30 },
+  { name: "Bob", age: 35 }
+];
+
+// Update the second element (index 1)
+jsonDatas.forEach((item, index) => {
+  if (index === 1) {
+    item.name = "Janet";
+    item.age = 32;
+  }
+});
+
+console.log(jsonDatas); // Output: [{ name: "John", age: 25 }, { name: "Janet", age: 32 }, { name: "Bob", age: 35 }]
+
+
+//////////////////////////////////////////////////
+
+let jsonData = [
+  { name: "John", age: 25 },
+  { name: "Jane", age: 30 },
+  { name: "Bob", age: 35 }
+];
+
+// Remove the second element (index 1)
+jsonData.forEach((item, index) => {
+  if (index === 1) {
+    jsonData.splice(index, 1);
+  }
+});
+
+console.log(jsonData); // Output: [{ name: "John", age: 25 }, { name: "Bob", age: 35 }]
+
+
+
+
+</script>

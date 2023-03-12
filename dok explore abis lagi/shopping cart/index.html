@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="product">
+        <h2>Product 1</h2>
+        <p>Description of product 1</p>
+        <button class="add-to-cart" data-id="1" data-name="Product 1" data-price="10">Add to cart</button>
+        </div>
+
+        <div class="product">
+        <h2>Product 2</h2>
+        <p>Description of product 2</p>
+        <button class="add-to-cart" data-id="2" data-name="Product 2" data-price="20">Add to cart</button>
+        </div>
+
+        <div id="cart">
+        <h2>Shopping Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: $<span id="cart-total">0</span></p>
+        </div>
+
+    
+</body>
+</html>
+
+<script>
+
+
+    // Get the add-to-cart buttons
+const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+// Add event listener to each button
+addToCartButtons.forEach(button => {
+  button.addEventListener('click', addToCartClicked);
+});
+
+// Function to handle add-to-cart button click
+function addToCartClicked(event) {
+  // Get the product details
+  const button = event.target;
+  const id = button.dataset.id;
+  const name = button.dataset.name;
+  const price = button.dataset.price;
+  
+  // Check if product already exists in cart
+  const cartItems = getCartItems();
+  const existingItem = cartItems.find(item => item.id === id);
+  if (existingItem) {
+    existingItem.quantity++;
+  } else {
+    cartItems.push({ id, name, price, quantity: 1 });
+  }
+  
+  // Save cart items to local storage
+  saveCartItems(cartItems);
+  
+  // Update cart display
+  updateCartDisplay();
+}
+
+// Function to get cart items from local storage
+function getCartItems() {
+  return JSON.parse(localStorage.getItem('cartItems')) || [];
+}
+
+// Function to save cart items to local storage
+function saveCartItems(cartItems) {
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+}
+
+// Function to update cart display
+function updateCartDisplay() {
+  const cartItemsList = document.querySelector('#cart-items');
+  const cartTotal = document.querySelector('#cart-total');
+  
+  // Clear current cart display
+  cartItemsList.innerHTML = '';
+  
+  // Get cart items from local storage and display them
+  const cartItems = getCartItems();
+  let total = 0;
+  cartItems.forEach(item => {
+    const li = document.createElement('li');
+    li.innerHTML = `${item.name} - $${item.price} x ${item.quantity}`;
+    cartItemsList.appendChild(li);
+    total += item.price * item.quantity;
+  });
+  
+  // Update cart total
+  cartTotal.textContent = total.toFixed(2);
+}
+
+// Load cart items on page load
+updateCartDisplay();
+
+</script>
